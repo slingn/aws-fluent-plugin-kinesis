@@ -25,7 +25,7 @@ module Fluent
       split_to_batches(records).each do |batch|
         batch_request_with_retry(batch)
       end
-      log.debug("Written #{records.size} records")
+      log.info("FluentD sent #{records.size} records to Firehose at #{Time.now.strftime("%Y-%m-%d %H:%M:%S.%L")}")
     end
 
     private
@@ -42,3 +42,4 @@ module Fluent
     end
   end
 end
+

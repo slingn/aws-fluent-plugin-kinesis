@@ -14,6 +14,9 @@
 
 .PHONY: copyright test install benchmark benchmark-streams benchmark-producer hello $(wildcard test/test_*.rb) $(wildcard test/**/test_*.rb)
 
+package:
+	rake clean test build install:local
+
 all:
 	bundle install
 	bundle exec rake binaries

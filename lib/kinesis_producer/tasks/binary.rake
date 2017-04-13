@@ -22,6 +22,7 @@ jar_url = "https://search.maven.org/remotecontent?filepath=com/amazonaws/amazon-
 cache_dir = Pathname.new(".cache")
 cache_jar_file = cache_dir.join(jar_file)
 binaries = KinesisProducer::Binary::Files.values
+pkg_dir = Pathname.new("pkg")
 
 directory cache_dir
 
@@ -42,7 +43,8 @@ task :binaries => binaries
 
 task :clean do
   rm_rf cache_dir
-  rm_rf File.dirname(File.dirname(binary))
+  rm_rf KinesisProducer::Binary::Dir
+  rm_rf pkg_dir
 end
 
 def download(url, target)
